@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		37FB19CD2E9FE69300527ECD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37FB19C82E9FE69300527ECD /* Assets.xcassets */; };
+		37FB19D02E9FE69300527ECD /* TodoAppV1_0App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FB19CB2E9FE69300527ECD /* TodoAppV1_0App.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		37F91B4B2E9FE44700645D9D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,14 +32,11 @@
 		37F91B3B2E9FE44500645D9D /* TodoAppV1.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoAppV1.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37F91B4A2E9FE44700645D9D /* TodoAppV1.0Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoAppV1.0Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		37F91B542E9FE44700645D9D /* TodoAppV1.0UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoAppV1.0UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		37FB19C82E9FE69300527ECD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		37FB19CB2E9FE69300527ECD /* TodoAppV1_0App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoAppV1_0App.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		37F91B3D2E9FE44500645D9D /* TodoAppV1.0 */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = TodoAppV1.0;
-			sourceTree = "<group>";
-		};
 		37F91B4D2E9FE44700645D9D /* TodoAppV1.0Tests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = TodoAppV1.0Tests;
@@ -43,6 +45,21 @@
 		37F91B572E9FE44700645D9D /* TodoAppV1.0UITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = TodoAppV1.0UITests;
+			sourceTree = "<group>";
+		};
+		37FB19D12E9FE69900527ECD /* View */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = View;
+			sourceTree = "<group>";
+		};
+		37FB19D22E9FE6A100527ECD /* Model */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Model;
+			sourceTree = "<group>";
+		};
+		37FB19D32E9FE6A600527ECD /* ViewModel */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -75,7 +92,7 @@
 		37F91B322E9FE44500645D9D = {
 			isa = PBXGroup;
 			children = (
-				37F91B3D2E9FE44500645D9D /* TodoAppV1.0 */,
+				37FB19CC2E9FE69300527ECD /* TodoAppV1.0 */,
 				37F91B4D2E9FE44700645D9D /* TodoAppV1.0Tests */,
 				37F91B572E9FE44700645D9D /* TodoAppV1.0UITests */,
 				37F91B3C2E9FE44500645D9D /* Products */,
@@ -90,6 +107,18 @@
 				37F91B542E9FE44700645D9D /* TodoAppV1.0UITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		37FB19CC2E9FE69300527ECD /* TodoAppV1.0 */ = {
+			isa = PBXGroup;
+			children = (
+				37FB19D22E9FE6A100527ECD /* Model */,
+				37FB19D32E9FE6A600527ECD /* ViewModel */,
+				37FB19D12E9FE69900527ECD /* View */,
+				37FB19C82E9FE69300527ECD /* Assets.xcassets */,
+				37FB19CB2E9FE69300527ECD /* TodoAppV1_0App.swift */,
+			);
+			path = TodoAppV1.0;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -108,7 +137,9 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				37F91B3D2E9FE44500645D9D /* TodoAppV1.0 */,
+				37FB19D12E9FE69900527ECD /* View */,
+				37FB19D22E9FE6A100527ECD /* Model */,
+				37FB19D32E9FE6A600527ECD /* ViewModel */,
 			);
 			name = TodoAppV1.0;
 			packageProductDependencies = (
@@ -212,6 +243,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37FB19CD2E9FE69300527ECD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37FB19D02E9FE69300527ECD /* TodoAppV1_0App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
