@@ -6,7 +6,22 @@
 //
 
 import Foundation
+import SwiftData
+import SwiftUICore
 
 class TodoListViewModel: ObservableObject{
-    @Published var todo: [Todo] = []
+    @Environment(\.modelContext) private var modelContext
+    @Published var todo: [TodoItem] = []
+    
+    func addTodoItem(title: String) {
+//            let newItem = TodoItem(timestamp: Date())
+//            modelContext.insert(newItem)
+
+    }
+
+    func deleteItems(offsets: IndexSet) {
+            for index in offsets {
+                modelContext.delete(todo[index])
+            }
+    }
 }
