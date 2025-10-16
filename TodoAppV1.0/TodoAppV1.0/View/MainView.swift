@@ -18,14 +18,14 @@ struct MainView: View {
                 HStack {
                     TextField("New Todo Title", text: $newTodoTitle)
                     Button("Add") {
-                        todoViewModel.addTodoItem(title: newTodoTitle)
+                        todoViewModel.createTodo(title: newTodoTitle, category: <#T##Category?#>)
                         newTodoTitle = ""
                     }
                 }
                 .padding()
                 Divider()
                 List{
-                    ForEach(todoViewModel.todo){ todo in
+                    ForEach(todoViewModel.todos){ todo in
                         HStack{
                             Text(todo.title)
                             
@@ -51,5 +51,5 @@ struct MainView: View {
 }
 
 #Preview {
-    AppTabView().environmentObject(TodoListViewModel())
+    AppTabView().environmentObject(TodoListViewModel(modelContext: <#ModelContext#>))
 }

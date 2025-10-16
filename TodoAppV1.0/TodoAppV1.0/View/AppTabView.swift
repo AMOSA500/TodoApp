@@ -25,5 +25,4 @@ struct AppTabView: View { // Renamed to avoid confusion with the SwiftUI type
 
 #Preview {
     AppTabView()
-        .environmentObject(TodoListViewModel()) // Provide the environment object for the preview
 }
