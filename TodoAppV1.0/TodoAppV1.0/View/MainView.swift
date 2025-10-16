@@ -21,8 +21,8 @@ struct MainView: View {
                         todoViewModel.addTodoItem(title: newTodoTitle)
                         newTodoTitle = ""
                     }
-                }.frame(maxWidth: .infinity, alignment: .center)
-                    .padding()
+                }
+                .padding()
                 Divider()
                 List{
                     ForEach(todoViewModel.todo){ todo in
@@ -43,7 +43,7 @@ struct MainView: View {
                     .toolbarColorScheme(.dark, for: .navigationBar)
                     .toolbarTitleDisplayMode(.inline)
 
-            }.background(Color(.systemGray6))
+            }//.background(Color(.systemGray6))
 
         }
 
@@ -51,5 +51,5 @@ struct MainView: View {
 }
 
 #Preview {
-    MainView().environmentObject(TodoListViewModel())
+    AppTabView().environmentObject(TodoListViewModel())
 }

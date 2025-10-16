@@ -10,18 +10,32 @@ import SwiftData
 import SwiftUICore
 
 class TodoListViewModel: ObservableObject{
-    @Environment(\.modelContext) private var modelContext
-    @Published var todo: [TodoItem] = []
+    @Published var selectedCategory: Category?
+    @Published var todos: [TodoItem] = []
+    @Published var category: [Category] = []
     
-    func addTodoItem(title: String) {
-//            let newItem = TodoItem(timestamp: Date())
-//            modelContext.insert(newItem)
+    private var modelContext: ModelContext
+    
+    init(modelContext: ModelContext) {
+        self.modelContext = modelContext
+    }
+ 
+    func createTodo(title: String, category: Category?) {
+        let newTodo = TodoItem(title: title)
+        modelContext.insert(newTodo)
+        todos.append(newTodo)
+        
 
     }
+    
+    func addCategory(name: String) {
+    
+    }
+    
 
     func deleteItems(offsets: IndexSet) {
             for index in offsets {
-                modelContext.delete(todo[index])
+                modelContext.delete(todos[index])
             }
     }
 }

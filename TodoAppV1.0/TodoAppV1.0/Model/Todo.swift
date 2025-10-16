@@ -26,7 +26,7 @@ final class TodoItem{
     var createdAt: Date
     var category: Category?
     
-    init(title: String, isCompleted: Bool, createdAt: Date, category: Category? = nil) {
+    init(title: String, isCompleted: Bool = false, createdAt: Date = Date(), category: Category? = nil) {
         self.title = title
         self.isCompleted = isCompleted
         self.createdAt = createdAt
