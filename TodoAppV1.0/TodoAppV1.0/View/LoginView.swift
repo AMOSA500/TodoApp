@@ -21,20 +21,31 @@ struct LoginView: View{
             // Login Form
             Form{
                 // Display section
-          
-                Text(login_view_model.errorMessage)
-                        .foregroundColor(Color.red)
+                HStack{
+                    if !login_view_model.errorMessage.isEmpty{
+                        Text(login_view_model.errorMessage)
+                            .foregroundColor(login_view_model.isEmailValid ? Color.green : Color.red)
+                    }
+                }.frame(maxWidth: .infinity, maxHeight: .infinity)
                 
                 
                 TextField("Email Address", text: $login_view_model.email)
                     .textFieldStyle(DefaultTextFieldStyle())
                     .autocapitalization(.none)
+                    .autocorrectionDisabled()
+                    .onChange(of: login_view_model.email, {
+                        if login_view_model.isEmailValid{
+                            login_view_model.errorMessage = "✅ Valid email"
+                        }else{
+                            login_view_model.errorMessage = "❌ Invalid email"
+                        }
+                    })
                 
                 TextField("Password", text: $login_view_model.password)
                     .textFieldStyle(DefaultTextFieldStyle())
                 
                 AuthButton(title: "Login", background: .blue,action: {
-                    // action
+                    login_view_model.login()
                 })
             }
             VStack{
