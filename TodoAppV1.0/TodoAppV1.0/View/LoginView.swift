@@ -9,42 +9,43 @@ import SwiftUI
 
 
 struct LoginView: View{
-    @State var email = ""
-    @State var password = ""
+    @StateObject var login_view_model = LoginViewVM()
     var body: some View{
+        NavigationView{
         VStack{
             // Header
-            HeaderView()
+            HeaderView(title: "To Do List", subtitle: "Get things done", angle: 15, bg: .red)
+            
+            
             
             // Login Form
             Form{
-                TextField("Email Address", text: $email).textFieldStyle(RoundedBorderTextFieldStyle())
-                TextField("Password", text: $password)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                // Display section
+          
+                Text(login_view_model.errorMessage)
+                        .foregroundColor(Color.red)
                 
-                Button{
-                    // Login Attempt
-                }label:{
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 10)
-                            .foregroundColor(Color.blue)
-                        Text("Login")
-                            .foregroundColor(Color.white)
-                            .bold()
-                            .padding(10)
-                    }.padding(.top, 30)
-                }
+                
+                TextField("Email Address", text: $login_view_model.email)
+                    .textFieldStyle(DefaultTextFieldStyle())
+                    .autocapitalization(.none)
+                
+                TextField("Password", text: $login_view_model.password)
+                    .textFieldStyle(DefaultTextFieldStyle())
+                
+                AuthButton(title: "Login", background: .blue,action: {
+                    // action
+                })
             }
             VStack{
                 Text("New around here")
-                Button("Create An Account"){
-                    //RegisterView()
-                }
-            }
+                NavigationLink("Create An Account",destination: RegisterView())
+            }.padding(.bottom, 80)
             
             
             Spacer()
         }
+    }
     }
 }
 struct LoginView_Preview: PreviewProvider{
