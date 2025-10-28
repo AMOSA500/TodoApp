@@ -41,7 +41,7 @@ struct LoginView: View{
                         }
                     })
                 
-                TextField("Password", text: $login_view_model.password)
+                SecureField("Password", text: $login_view_model.password)
                     .textFieldStyle(DefaultTextFieldStyle())
                 
                 AuthButton(title: "Login", background: .blue,action: {

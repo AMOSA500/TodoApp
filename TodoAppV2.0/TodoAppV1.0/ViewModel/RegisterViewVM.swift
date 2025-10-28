@@ -13,12 +13,8 @@ class RegisterViewModel: ObservableObject{
     @Published var email = ""
     @Published var password = ""
     @Published var name = ""
-    var validateEmail: LoginViewVM
+    var validateEmail = LoginViewVM()
     
-    init(validateEmail: LoginViewVM){
-        self.validateEmail = validateEmail
-        
-    }
     
     func register(){
         guard validate() else{
