@@ -9,49 +9,59 @@ import SwiftUI
 
 
 struct LoginView: View{
-    @StateObject var login_view_model = LoginViewVM()
+    @StateObject var viewModel: validationViewModel = validationViewModel()
+    @State var email = ""
+    @State var password = ""
+    @StateObject var login_view_model: LoginViewVM
+    
     var body: some View{
         NavigationView{
         VStack{
             // Header
             HeaderView(title: "To Do List", subtitle: "Get things done", angle: 15, bg: .red)
             
-            
-            
             // Login Form
             Form{
                 // Display section
                 HStack{
-                    if !login_view_model.errorMessage.isEmpty{
-                        Text(login_view_model.errorMessage)
-                            .foregroundColor(login_view_model.isEmailValid ? Color.green : Color.red)
+                    if !viewModel.errorMessage.isEmpty{
+                        Text(viewModel.errorMessage)
+                            .foregroundColor(
+                                viewModel
+                                    .isEmailValid(
+                                        email: email
+                                    ) ? Color.green : Color.red
+                            )
                     }
                 }.frame(maxWidth: .infinity, maxHeight: .infinity)
                 
                 
-                TextField("Email Address", text: $login_view_model.email)
+                TextField("Email Address", text: $email)
                     .textFieldStyle(DefaultTextFieldStyle())
                     .autocapitalization(.none)
                     .autocorrectionDisabled()
-                    .onChange(of: login_view_model.email, {
-                        if login_view_model.isEmailValid{
-                            login_view_model.errorMessage = "✅ Valid email"
-                        }else{
-                            login_view_model.errorMessage = "❌ Invalid email"
+                    .onChange(of: email, {
+                        if viewModel.isEmailValid(email: email){
+                            viewModel.errorMessage = "✅ Valid email"
+                        }else if email.isEmpty{
+                            viewModel.errorMessage = ""
+                        }
+                        else{
+                            viewModel.errorMessage = "❌ Invalid email"
                         }
                     })
                 
-                SecureField("Password", text: $login_view_model.password)
+                SecureField("Password", text: $password)
                     .textFieldStyle(DefaultTextFieldStyle())
                 
                 AuthButton(title: "Login", background: .blue,action: {
-                    login_view_model.login()
+                    login_view_model.login(email: email, password: password)
                 })
             }
             VStack{
                 Text("New around here")
                 NavigationLink("Create An Account",destination: RegisterView())
-            }.padding(.bottom, 80)
+            }.padding(.top, 80)
             
             
             Spacer()
@@ -61,6 +71,6 @@ struct LoginView: View{
 }
 struct LoginView_Preview: PreviewProvider{
     static var previews: some View{
-        LoginView()
+        LoginView(login_view_model: LoginViewVM())
     }
 }

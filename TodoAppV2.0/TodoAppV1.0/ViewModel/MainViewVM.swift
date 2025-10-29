@@ -6,3 +6,25 @@
 //
 
 import Foundation
+import FirebaseAuth
+class MainViewViewModel: ObservableObject {
+    @Published var currentUserId: String = ""
+    
+    private var handler: AuthStateDidChangeListenerHandle?
+    init(){
+        self.handler = Auth.auth().addStateDidChangeListener({ (auth, _) in
+            DispatchQueue.main.async {
+                if let user = auth.currentUser {
+                    self.currentUserId = user.uid
+                } else {
+                    self.currentUserId = ""
+                }
+            }
+            
+        })
+    }
+    
+    public var isLoggedIn: Bool {
+        return Auth.auth().currentUser != nil
+    }
+}

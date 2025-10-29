@@ -29,7 +29,7 @@ struct TodoAppV1_0App: App {
 
     var body: some Scene {
         WindowGroup {
-            LoginView()
+            MainView()
                 //.environmentObject(todoViewModel)
         }
         //.modelContainer(container)

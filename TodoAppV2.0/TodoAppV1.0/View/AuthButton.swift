@@ -10,7 +10,9 @@ import SwiftUI
 struct AuthButton: View {
     let title: String
     let background: Color
-    let action: () -> Void
+    var action: () -> ()
+    @StateObject var viewModel: validationViewModel = validationViewModel()
+
     
     var body: some View {
         Button{
@@ -24,6 +26,11 @@ struct AuthButton: View {
                     .bold()
                     .padding(10)
             }.padding(.vertical, 30)
+        }
+        .alert("Message alert", isPresented: $viewModel.isShowAlert){
+            Button("Ok", role: .cancel){}
+        }message:{
+            Text(viewModel.errorMessage)
         }
     }
 }
