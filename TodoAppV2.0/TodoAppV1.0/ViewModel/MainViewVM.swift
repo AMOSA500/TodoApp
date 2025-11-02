@@ -12,16 +12,11 @@ class MainViewViewModel: ObservableObject {
     
     private var handler: AuthStateDidChangeListenerHandle?
     init(){
-        self.handler = Auth.auth().addStateDidChangeListener({ (auth, _) in
+        self.handler = Auth.auth().addStateDidChangeListener{ [weak self] _, user in
             DispatchQueue.main.async {
-                if let user = auth.currentUser {
-                    self.currentUserId = user.uid
-                } else {
-                    self.currentUserId = ""
-                }
+                self?.currentUserId = user?.uid ?? ""
             }
-            
-        })
+        }
     }
     
     public var isLoggedIn: Bool {

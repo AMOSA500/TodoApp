@@ -19,17 +19,17 @@ final class Category {
     }
 }
 
-@Model
-final class TodoItem{
+
+struct TodoItem: Codable, Identifiable {
+    var id: String
     var title: String
     var isCompleted: Bool
-    var createdAt: Date
-    var category: Category?
+    var createdAt: TimeInterval
+    var dueDate: TimeInterval
     
-    init(title: String, isCompleted: Bool = false, createdAt: Date = Date(), category: Category? = nil) {
-        self.title = title
-        self.isCompleted = isCompleted
-        self.createdAt = createdAt
-        self.category = category
+    mutating func toggleCompleted() {
+        isCompleted.toggle()
     }
+    
+   
 }

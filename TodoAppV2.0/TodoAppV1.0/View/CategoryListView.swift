@@ -8,23 +8,49 @@
 import SwiftUI
 
 struct CategoryListView: View {
-    @EnvironmentObject var viewModel: TodoListViewModel
+    @StateObject var viewModel: CategoryListViewModel = CategoryListViewModel()
     @Environment(\.modelContext) private var modelContext
     @State private var newCategory = ""
     
     var body: some View {
         NavigationStack{
             VStack(alignment: .leading, spacing: 0){
-                HStack{
-                    TextField("New category", text: $newCategory)
-                    Button("Add"){
-                        if !newCategory.isEmpty{
+                    Form{
+                        TextField("Add New Category", text: $newCategory)
+                            .textFieldStyle(DefaultTextFieldStyle())
+                            .padding()
+                        
+                        AuthButton(title: "Add", background: .red, action: {
+                            if newCategory.isEmpty{
+                                viewModel.isShowAlert = true
+                            }
                             
-                        }
+                        })
+                    }.frame(maxWidth: .infinity, maxHeight: 280)
+                
+                     
+                
+                
+                VStack{
+                    HStack{
+                        Text("List of Categories")
+                            .font(.system(size: 18, weight: .bold))
+                            .foregroundColor(Color.gray)     
                     }
-                }
+                    Divider()
+                        
+                }.padding(20)
+                Spacer()
+                
+                
+               
+                
             }
-            
+            .resuableAlert(
+                alert_title: "Error with Category",
+                alert_message: "Please enter a category name to add",
+                isSetAlert: $viewModel.isShowAlert
+            )
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     Text("✍️ Category List").font(.title2).fontWeight(.bold)

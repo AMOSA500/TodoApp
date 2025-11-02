@@ -14,47 +14,35 @@ struct MainView: View {
 
     var body: some View {
         if mainVM.isLoggedIn, !mainVM.currentUserId.isEmpty {
-            NavigationStack {
-                VStack(alignment: .leading, spacing: 0) {
-
-                    HStack {
-                        TextField("New Todo Title", text: $newTodoTitle)
-                        Button("Add") {
-                            todoViewModel.createTodo(title: newTodoTitle, category: todoViewModel.selectedCategory)
-                            newTodoTitle = ""
-                        }
-                    }
-                    .padding()
-                    Divider()
-                    List{
-    //                    ForEach(todoViewModel.todos){ todo in
-    //                        HStack{
-    //                            Text(todo.title)
-    //
-    //                        }
-    //                    }
-                    }
-                    Spacer()
-
-                        .toolbar {
-                            ToolbarItem(placement: .principal) {
-                                Text("✍️ Todo List").font(.title2).fontWeight(.bold)
-                            }
-                        }.toolbarBackground(Color.black, for: .navigationBar)
-                        .toolbarBackground(.visible, for: .navigationBar)
-                        .toolbarColorScheme(.dark, for: .navigationBar)
-                        .toolbarTitleDisplayMode(.inline)
-
-                }//.background(Color(.systemGray6))
-
-            }
+            accountView
         }else {
-            LoginView(login_view_model: LoginViewVM())
+            LoginView()
         }
 
+    }
+    // abstract the view
+    @ViewBuilder
+    var accountView: some View {
+        TabView{
+            TodoListView(userId: mainVM.currentUserId)
+                .tabItem {
+                    Label("Home", systemImage: "house")
+                }
+            
+            CategoryListView()
+                .tabItem {
+                    Label("Categories", systemImage: "list.bullet")
+                }
+            
+            ProfileView()
+                .tabItem {
+                    Label("Profile", systemImage: "person.circle")
+                }
+            
+        }
     }
 }
 
 #Preview {
-    AppTabView()
+    MainView()
 }

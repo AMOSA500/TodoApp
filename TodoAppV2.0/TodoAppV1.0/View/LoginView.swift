@@ -12,7 +12,7 @@ struct LoginView: View{
     @StateObject var viewModel: validationViewModel = validationViewModel()
     @State var email = ""
     @State var password = ""
-    @StateObject var login_view_model: LoginViewVM
+    @StateObject var login_view_model: LoginViewVM = LoginViewVM()
     
     var body: some View{
         NavigationView{
@@ -71,6 +71,6 @@ struct LoginView: View{
 }
 struct LoginView_Preview: PreviewProvider{
     static var previews: some View{
-        LoginView(login_view_model: LoginViewVM())
+        LoginView()
     }
 }

@@ -15,17 +15,6 @@ struct TodoAppV1_0App: App {
     init() {
         FirebaseApp.configure()
     }
-//    @StateObject private var todoViewModel: TodoListViewModel
-//    let container: ModelContainer
-//    
-//    init() {
-//        do{
-//            container = try ModelContainer(for: TodoItem.self, Category.self)
-//            _todoViewModel = StateObject(wrappedValue: TodoListViewModel(modelContext: container.mainContext))
-//        }catch{
-//            fatalError("Failed to create ModelContainer: \(error)")
-//        }
-//    }
 
     var body: some Scene {
         WindowGroup {
