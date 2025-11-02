@@ -29,7 +29,8 @@ class RegisterViewModel: ObservableObject{
         // Register
         Auth.auth().createUser(withEmail: email, password: password, completion: {[weak self] result, error in
             guard let userId = result?.user.uid else{
-                print("Error creating user")
+                self?.messageStatus = "Error creating user \(error?.localizedDescription ?? "Unknown error")"
+                self?.isShowAlert.toggle()
                 return
             }
             self?.insertUserRecord(id: userId)

@@ -57,6 +57,12 @@ struct RegisterView: View {
             })
 
             }.scrollContentBackground(.hidden)
+        resuableAlert(
+            alert_title: "Registration Error",
+            alert_message: viewModel.messageStatus,
+            isSetAlert: $viewModel.isShowAlert
+        )
+            
             
         Spacer()
     }

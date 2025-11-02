@@ -5,45 +5,24 @@
 //  Created by Nafiu Amosa on 15/10/2025.
 //
 
-import Foundation
-import SwiftData
-import SwiftUI
+
+import FirebaseFirestore
 
 class TodoListViewModel: ObservableObject{
     @Published var isAddTaskSheetPresented: Bool = false
-//    @Published var selectedCategory: Category?
-//    @Published var todos: [TodoItem] = []
-//    @Published var category: [Category] = []
-//    
-//    private var modelContext: ModelContext
-//    init(
-//        selectedCategory: Category? = nil,
-//        todos: [TodoItem],
-//        category: [Category],
-//        modelContext: ModelContext
-//    ) {
-//        self.selectedCategory = selectedCategory
-//        self.todos = todos
-//        self.category = category
-//        self.modelContext = modelContext
-//    }
-// 
-//    func createTodo(title: String, category: Category?) {
-//        let newTodo = TodoItem(title: title)
-//        modelContext.insert(newTodo)
-//        todos.append(newTodo)
-//        
-//
-//    }
-//    
-//    func addCategory(name: String) {
-//    
-//    }
-//    
-//
-//    func deleteItems(offsets: IndexSet) {
-//            for index in offsets {
-//                modelContext.delete(todos[index])
-//            }
-//    }
+    private let userId: String
+    
+    init(userId: String) {
+        self.userId = userId
+    }
+
+    func deleteItem(id: String) {
+        
+        let db = Firestore.firestore()
+        db.collection("users")
+            .document(userId)
+            .collection("todos")
+            .document(id)
+            .delete()
+    }
 }

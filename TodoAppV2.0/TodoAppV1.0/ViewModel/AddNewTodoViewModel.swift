@@ -47,7 +47,7 @@ class AddNewTodoViewModel: ObservableObject {
         db.collection("users")
             .document(userId)
             .collection("todos")
-            .document(userId)
+            .document(newTodo.id) // Using just id did not work
             .setData(newTodo.asDictionary())
         
         print("Todo saved")
