@@ -8,12 +8,15 @@
 import SwiftUI
 
 struct TodoListItemView: View {
-    @StateObject var userProfile: ProfileViewModel = ProfileViewModel()
+    @StateObject var viewModel: TodoListItemViewModel = TodoListItemViewModel()
     let item: TodoItem
     var body: some View {
         HStack{
             VStack(alignment: .leading){
-                Text(item.title).font(.title2).bold()
+                Text(item.title)
+                    .font(.title2)
+                    .strikethrough(item.isCompleted)
+                    .foregroundColor(item.isCompleted ? .gray: .primary)
                 Text(
                     Date(timeIntervalSince1970: item.dueDate)
                         .formatted(date: .abbreviated, time: .shortened)
@@ -24,7 +27,7 @@ struct TodoListItemView: View {
             }
             Spacer()
             Button{
-                userProfile.toggleIsCompleted(item: item)
+                viewModel.toggleIsCompleted(item: item)
             }label: {
                 Label(
                     "",

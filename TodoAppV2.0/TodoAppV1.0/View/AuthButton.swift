@@ -10,6 +10,7 @@ import SwiftUI
 struct AuthButton: View {
     let title: String
     let background: Color
+    let foreground: Color
     var action: () -> ()
     @StateObject var viewModel: validationViewModel = validationViewModel()
 
@@ -22,7 +23,7 @@ struct AuthButton: View {
                 RoundedRectangle(cornerRadius: 10)
                     .foregroundColor(background)
                 Text(title)
-                    .foregroundColor(Color.white)
+                    .foregroundColor(foreground)
                     .bold()
                     .padding(10)
             }.padding(.vertical, 30)
@@ -36,7 +37,7 @@ struct AuthButton: View {
 }
 
 #Preview {
-    AuthButton(title: "Default", background: .blue, action: {
+    AuthButton(title: "Default", background: .blue, foreground: .white, action: {
         //
     })
 }

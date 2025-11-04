@@ -20,7 +20,7 @@ struct CategoryListView: View {
                             .textFieldStyle(DefaultTextFieldStyle())
                             .padding()
                         
-                        AuthButton(title: "Add", background: .red, action: {
+                        AuthButton(title: "Add", background: .red, foreground: .white, action: {
                             if newCategory.isEmpty{
                                 viewModel.isShowAlert = true
                             }

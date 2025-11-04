@@ -52,12 +52,12 @@ struct RegisterView: View {
                     .textFieldStyle(DefaultTextFieldStyle())
                 
             // Register Button
-            AuthButton(title: "Create account", background: .green, action: {
+                AuthButton(title: "Create account", background: .green, foreground: .white, action: {
                 viewModel.register()
             })
 
             }.scrollContentBackground(.hidden)
-        resuableAlert(
+            .resuableAlert(
             alert_title: "Registration Error",
             alert_message: viewModel.messageStatus,
             isSetAlert: $viewModel.isShowAlert

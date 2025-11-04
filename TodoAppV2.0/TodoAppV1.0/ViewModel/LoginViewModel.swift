@@ -9,7 +9,7 @@ import Foundation
 import FirebaseAuth
 import SwiftUI
 
-class LoginViewVM: ObservableObject{
+class LoginViewModel: ObservableObject{
     @StateObject private var validator = validationViewModel()
     
     func login(email: String, password: String){

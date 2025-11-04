@@ -27,8 +27,8 @@ struct TodoItem: Codable, Identifiable {
     var createdAt: TimeInterval
     var dueDate: TimeInterval
     
-    mutating func toggleCompleted() {
-        isCompleted.toggle()
+    mutating func toggleCompleted(_ state: Bool) {
+        isCompleted = state
     }
     
    

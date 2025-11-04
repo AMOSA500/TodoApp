@@ -12,7 +12,7 @@ struct LoginView: View{
     @StateObject var viewModel: validationViewModel = validationViewModel()
     @State var email = ""
     @State var password = ""
-    @StateObject var login_view_model: LoginViewVM = LoginViewVM()
+    @StateObject var login_view_model: LoginViewModel = LoginViewModel()
     
     var body: some View{
         NavigationView{
@@ -54,7 +54,7 @@ struct LoginView: View{
                 SecureField("Password", text: $password)
                     .textFieldStyle(DefaultTextFieldStyle())
                 
-                AuthButton(title: "Login", background: .blue,action: {
+                AuthButton(title: "Login", background: .white, foreground: .red,action: {
                     login_view_model.login(email: email, password: password)
                 })
             }

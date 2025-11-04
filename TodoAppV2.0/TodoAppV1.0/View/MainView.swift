@@ -33,7 +33,7 @@ struct MainView: View {
                 .tabItem {
                     Label("Categories", systemImage: "list.bullet")
                 }
-            
+           
             ProfileView()
                 .tabItem {
                     Label("Profile", systemImage: "person.circle")

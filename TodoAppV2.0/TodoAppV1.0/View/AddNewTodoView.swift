@@ -30,7 +30,7 @@ struct AddNewTodoView: View {
                     .datePickerStyle(GraphicalDatePickerStyle())
                 
                 // Button
-                AuthButton(title: "Save", background: .red){
+                AuthButton(title: "Save", background: .red, foreground: .white){
                     if viewModel.checkValidity{
                         viewModel.saveTodo()
                         isNewItemPresented = false
